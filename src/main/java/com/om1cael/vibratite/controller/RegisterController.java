@@ -3,14 +3,17 @@ package com.om1cael.vibratite.controller;
 import com.om1cael.vibratite.Main;
 import com.om1cael.vibratite.dao.UserDAO;
 import com.om1cael.vibratite.model.User;
+import com.om1cael.vibratite.view.MenuView;
 import com.om1cael.vibratite.view.RegisterView;
 
 public class RegisterController {
     RegisterView registerView;
+    MenuView menuView;
     UserDAO userDAO;
 
-    public RegisterController(RegisterView registerView, UserDAO userDAO) {
+    public RegisterController(RegisterView registerView, MenuView menuView, UserDAO userDAO) {
         this.registerView = registerView;
+        this.menuView = menuView;
         this.userDAO = userDAO;
 
         this.handleRegister();
@@ -22,6 +25,8 @@ public class RegisterController {
         if(userDAO.create(newUser)) {
             Main.loggedInUser = newUser;
             registerView.successfulRegister(newUser);
+
+            menuView.showApp();
         } else {
             registerView.unsuccessfulRegister();
         }

@@ -25,6 +25,7 @@ public class MenuController {
             case 1: {
                 new RegisterController(
                     new RegisterView(this.inputController),
+                    this.menuView,
                     new UserDAO(this.dbConnector)
                 );
             }
