@@ -3,6 +3,7 @@ package com.om1cael.vibratite;
 import com.om1cael.vibratite.controller.InputController;
 import com.om1cael.vibratite.controller.MenuController;
 import com.om1cael.vibratite.db.DBConnector;
+import com.om1cael.vibratite.model.User;
 import com.om1cael.vibratite.view.InputView;
 import com.om1cael.vibratite.view.MenuView;
 
@@ -10,6 +11,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
+    public static User loggedInUser = null;
+
     public static void main(String[] args) {
         try {
             DBConnector dbConnector = new DBConnector();
@@ -18,7 +21,7 @@ public class Main {
             InputController inputController = new InputController(inputView);
 
             MenuView menuView = new MenuView(inputController);
-            new MenuController(menuView);
+            new MenuController(menuView, inputController, dbConnector);
         } catch (SQLException e) {
             throw new RuntimeException("An error occurred during the initialization", e);
         }
