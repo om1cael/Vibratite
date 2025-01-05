@@ -22,16 +22,17 @@ public class MenuController {
         int choice = (int) menuView.showJoin();
 
         switch(choice) {
-            case 1: {
-                new RegisterController(
-                    new RegisterView(this.inputController),
-                    this.menuView,
-                    new UserDAO(this.dbConnector)
-                );
-            }
-
-            case 2: System.out.println("Login");
-            default: System.out.println("Invalid");
+            case 1 -> this.createRegisterController();
+            case 2 -> System.out.println("Login");
+            default -> System.out.println("Invalid");
         }
+    }
+
+    private void createRegisterController() {
+        new RegisterController(
+                new RegisterView(this.inputController),
+                this.menuView,
+                new UserDAO(this.dbConnector)
+        );
     }
 }
