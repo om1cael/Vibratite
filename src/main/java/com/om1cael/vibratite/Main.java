@@ -1,6 +1,5 @@
 package com.om1cael.vibratite;
 
-import com.om1cael.vibratite.dao.UserDAO;
 import com.om1cael.vibratite.db.DBConnector;
 
 import java.sql.SQLException;

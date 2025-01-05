@@ -1,28 +1,28 @@
 package com.om1cael.vibratite.dao;
 
 import com.om1cael.vibratite.db.DBConnector;
-import com.om1cael.vibratite.model.User;
+import com.om1cael.vibratite.model.Game;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO {
+public class GameDAO {
     private final Connection connection;
 
-    public UserDAO(DBConnector dbConnector) {
+    public GameDAO(DBConnector dbConnector) {
         this.connection = dbConnector.getConnection();
     }
 
-    public boolean create(User user) {
+    public boolean create(Game game) {
         final String statement = """
-                             INSERT INTO Users (name, email)
-                             VALUES (?, ?)
-                             """;
+                                 INSERT INTO Games (name, price)
+                                 VALUES (?, ?)
+                                 """;
 
-        try(PreparedStatement preparedStatement = this.connection.prepareStatement(statement)) {
-            preparedStatement.setString(1, user.name());
-            preparedStatement.setString(2, user.email());
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement(statement)) {
+            preparedStatement.setString(1, game.name());
+            preparedStatement.setDouble(2, game.price());
 
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
@@ -30,56 +30,57 @@ public class UserDAO {
         }
     }
 
-    public User get(int id) {
+    public Game get(int id) {
         final String query = """
-                             SELECT * FROM Users
+                             SELECT * FROM Games
                              WHERE id = ?
                              """;
 
         try(PreparedStatement preparedStatement = this.connection.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()) {
-                return new User(
+                return new Game(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
-                    resultSet.getString("email")
+                    resultSet.getDouble("price")
                 );
             }
+
+            return null;
         } catch (SQLException e) {
             return null;
         }
-
-        return null;
     }
 
-    public List<User> getAll() {
-        final String query = "SELECT * FROM Users";
-        List<User> userList = new ArrayList<>();
+    public List<Game> getAll() {
+        final String query = "SELECT * FROM Games";
+        List<Game> gameList = new ArrayList<>();
 
         try(Statement statement = this.connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
 
             while(resultSet.next()) {
-                User user = new User(
+                Game game = new Game(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
-                    resultSet.getString("email")
+                    resultSet.getDouble("price")
                 );
 
-                userList.add(user);
+                gameList.add(game);
             }
         } catch (SQLException e) {
             return null;
         }
 
-        return userList;
+        return gameList;
     }
 
     public boolean delete(int id) {
         final String statement = """
-                                 DELETE FROM Users
+                                 DELETE FROM Games
                                  WHERE id = ?
                                  """;
 
