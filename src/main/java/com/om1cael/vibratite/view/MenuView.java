@@ -12,9 +12,10 @@ public class MenuView {
     public void showMenu() {
         System.out.println("1. Create a new account");
         System.out.println("2. Login into an existing account");
+        System.out.println("3. Exit");
     }
 
     public double getMenuInput() {
-        return this.inputController.handleNumberInput("Your choice: ", 1, 2);
+        return this.inputController.handleNumberInput("Your choice: ", 1, 3);
     }
 }
