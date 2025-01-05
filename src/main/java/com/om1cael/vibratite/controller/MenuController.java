@@ -16,16 +16,17 @@ public class MenuController {
         this.inputController = inputController;
         this.dbConnector = dbConnector;
 
-        this.handleJoinChoice();
+        this.handleMenuChoice();
     }
 
-    public void handleJoinChoice() {
-        int choice = (int) menuView.showJoin();
+    public void handleMenuChoice() {
+        menuView.showMenu();
+        int choice = (int) menuView.getMenuInput();
 
         switch(choice) {
             case 1 -> this.createRegisterAuthController();
             case 2 -> this.createLoginAuthController();
-            default -> System.out.println("Invalid");
+            default -> System.exit(0);
         }
     }
 
