@@ -2,6 +2,7 @@ package com.om1cael.vibratite.controller;
 
 import com.om1cael.vibratite.dao.UserDAO;
 import com.om1cael.vibratite.db.DBConnector;
+import com.om1cael.vibratite.view.AppView;
 import com.om1cael.vibratite.view.LoginView;
 import com.om1cael.vibratite.view.MenuView;
 import com.om1cael.vibratite.view.RegisterView;
@@ -33,7 +34,7 @@ public class MenuController {
     private void createRegisterAuthController() {
         new RegisterAuthController(
                 new RegisterView(this.inputController),
-                this.menuView,
+                new AppView(this.inputController),
                 new UserDAO(this.dbConnector)
         ).handleAuth();
     }
@@ -41,7 +42,7 @@ public class MenuController {
     private void createLoginAuthController() {
         new LoginAuthController(
                 new LoginView(this.inputController),
-                this.menuView,
+                new AppView(this.inputController),
                 new UserDAO(this.dbConnector)
         ).handleAuth();
     }

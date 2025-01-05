@@ -4,17 +4,17 @@ import com.om1cael.vibratite.Main;
 import com.om1cael.vibratite.controller.interfaces.AuthController;
 import com.om1cael.vibratite.dao.UserDAO;
 import com.om1cael.vibratite.model.User;
+import com.om1cael.vibratite.view.AppView;
 import com.om1cael.vibratite.view.LoginView;
-import com.om1cael.vibratite.view.MenuView;
 
 public class LoginAuthController implements AuthController {
     LoginView loginView;
-    MenuView menuView;
+    AppView appView;
     UserDAO userDAO;
 
-    public LoginAuthController(LoginView registerView, MenuView menuView, UserDAO userDAO) {
+    public LoginAuthController(LoginView registerView, AppView appView, UserDAO userDAO) {
         this.loginView = registerView;
-        this.menuView = menuView;
+        this.appView = appView;
         this.userDAO = userDAO;
     }
 
@@ -25,7 +25,7 @@ public class LoginAuthController implements AuthController {
             Main.loggedInUser = user;
             loginView.successfulLogin(user);
 
-            menuView.showApp();
+            appView.showApp();
         } else {
             loginView.unsuccessfulLogin();
         }
