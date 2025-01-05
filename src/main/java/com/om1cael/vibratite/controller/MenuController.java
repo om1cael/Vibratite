@@ -12,6 +12,12 @@ public class MenuController {
     }
 
     public void handleJoinChoice() {
-        menuView.showJoin();
+        int choice = (int) menuView.showJoin();
+
+        switch(choice) {
+            case 1 -> System.out.println("Register");
+            case 2 -> System.out.println("Login");
+            default -> System.out.println("Invalid");
+        }
     }
 }
