@@ -1,4 +1,4 @@
-package com.om1cael.vibratite.view.MainApp;
+package com.om1cael.vibratite.view.main;
 
 import com.om1cael.vibratite.controller.InputController;
 
