@@ -1,9 +1,12 @@
 package com.om1cael.vibratite.controller.main;
 
 import com.om1cael.vibratite.controller.InputController;
+import com.om1cael.vibratite.controller.interactions.GamesController;
 import com.om1cael.vibratite.controller.interactions.MyGamesController;
+import com.om1cael.vibratite.dao.GameDAO;
 import com.om1cael.vibratite.dao.LibraryDAO;
 import com.om1cael.vibratite.db.DBConnector;
+import com.om1cael.vibratite.view.interactions.GamesView;
 import com.om1cael.vibratite.view.interactions.MyGamesView;
 import com.om1cael.vibratite.view.main.AppView;
 
@@ -24,6 +27,7 @@ public class AppController {
 
         switch(choice) {
             case 1 -> this.createMyGamesController();
+            case 2 -> this.createGamesController();
             default -> System.exit(0);
         }
     }
@@ -32,6 +36,13 @@ public class AppController {
         new MyGamesController(
                 new MyGamesView(),
                 new LibraryDAO(this.dbConnector)
+        ).interact();
+    }
+
+    private void createGamesController() {
+        new GamesController(
+                new GamesView(),
+                new GameDAO(this.dbConnector)
         ).interact();
     }
 }
