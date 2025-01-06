@@ -1,20 +1,21 @@
-package com.om1cael.vibratite.controller.Auth;
+package com.om1cael.vibratite.controller.auth;
 
 import com.om1cael.vibratite.Main;
-import com.om1cael.vibratite.controller.Auth.interfaces.AuthController;
+import com.om1cael.vibratite.controller.auth.interfaces.AuthController;
+import com.om1cael.vibratite.controller.main.AppController;
 import com.om1cael.vibratite.dao.UserDAO;
 import com.om1cael.vibratite.model.User;
-import com.om1cael.vibratite.view.MainApp.AppView;
-import com.om1cael.vibratite.view.Auth.RegisterView;
+import com.om1cael.vibratite.view.main.AppView;
+import com.om1cael.vibratite.view.auth.RegisterView;
 
 public class RegisterAuthController implements AuthController {
     RegisterView registerView;
-    AppView appView;
+    AppController appController;
     UserDAO userDAO;
 
-    public RegisterAuthController(RegisterView registerView, AppView appView, UserDAO userDAO) {
+    public RegisterAuthController(RegisterView registerView, AppController appController, UserDAO userDAO) {
         this.registerView = registerView;
-        this.appView = appView;
+        this.appController = appController;
         this.userDAO = userDAO;
     }
 
@@ -25,7 +26,7 @@ public class RegisterAuthController implements AuthController {
             Main.loggedInUser = newUser;
             registerView.successfulRegister(newUser);
 
-            appView.showApp();
+            appController.handleMenuChoice();
         } else {
             registerView.unsuccessfulRegister();
         }
