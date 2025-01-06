@@ -1,16 +1,16 @@
-package com.om1cael.vibratite.view;
+package com.om1cael.vibratite.view.Auth;
 
 import com.om1cael.vibratite.controller.InputController;
 import com.om1cael.vibratite.model.User;
 
-public class LoginView {
+public class RegisterView {
     InputController inputController;
 
-    public LoginView(InputController inputController) {
+    public RegisterView(InputController inputController) {
         this.inputController = inputController;
     }
 
-    public User getLoginUser() {
+    public User getRegisterUser() {
         String name =
                 this.inputController.handleTextInput("Name: ", 4, 16);
         String email =
@@ -19,11 +19,11 @@ public class LoginView {
         return new User(0, name, email);
     }
 
-    public void successfulLogin(User user) {
-        System.out.println("Login to " + user.name() + " was successful!");
+    public void successfulRegister(User user) {
+        System.out.println("The account " + user.name() + " was registered successfully!");
     }
 
-    public void unsuccessfulLogin() {
-        System.out.println("It was not possible to login.");
+    public void unsuccessfulRegister() {
+        System.out.println("It was not possible to create the account.");
     }
 }

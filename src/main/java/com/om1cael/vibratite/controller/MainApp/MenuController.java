@@ -1,11 +1,14 @@
-package com.om1cael.vibratite.controller;
+package com.om1cael.vibratite.controller.MainApp;
 
+import com.om1cael.vibratite.controller.Auth.LoginAuthController;
+import com.om1cael.vibratite.controller.Auth.RegisterAuthController;
+import com.om1cael.vibratite.controller.InputController;
 import com.om1cael.vibratite.dao.UserDAO;
 import com.om1cael.vibratite.db.DBConnector;
-import com.om1cael.vibratite.view.AppView;
-import com.om1cael.vibratite.view.LoginView;
-import com.om1cael.vibratite.view.MenuView;
-import com.om1cael.vibratite.view.RegisterView;
+import com.om1cael.vibratite.view.MainApp.AppView;
+import com.om1cael.vibratite.view.Auth.LoginView;
+import com.om1cael.vibratite.view.MainApp.MenuView;
+import com.om1cael.vibratite.view.Auth.RegisterView;
 
 public class MenuController {
     private final MenuView menuView;

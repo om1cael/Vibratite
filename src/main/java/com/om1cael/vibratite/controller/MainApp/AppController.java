@@ -1,7 +1,8 @@
-package com.om1cael.vibratite.controller;
+package com.om1cael.vibratite.controller.MainApp;
 
+import com.om1cael.vibratite.controller.InputController;
 import com.om1cael.vibratite.db.DBConnector;
-import com.om1cael.vibratite.view.AppView;
+import com.om1cael.vibratite.view.MainApp.AppView;
 
 public class AppController {
     private final AppView appView;

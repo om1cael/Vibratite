@@ -1,11 +1,11 @@
 package com.om1cael.vibratite;
 
 import com.om1cael.vibratite.controller.InputController;
-import com.om1cael.vibratite.controller.MenuController;
+import com.om1cael.vibratite.controller.MainApp.MenuController;
 import com.om1cael.vibratite.db.DBConnector;
 import com.om1cael.vibratite.model.User;
 import com.om1cael.vibratite.view.InputView;
-import com.om1cael.vibratite.view.MenuView;
+import com.om1cael.vibratite.view.MainApp.MenuView;
 
 import java.sql.SQLException;
 import java.util.Scanner;
