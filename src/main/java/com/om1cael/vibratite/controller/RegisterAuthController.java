@@ -5,7 +5,6 @@ import com.om1cael.vibratite.controller.interfaces.AuthController;
 import com.om1cael.vibratite.dao.UserDAO;
 import com.om1cael.vibratite.model.User;
 import com.om1cael.vibratite.view.AppView;
-import com.om1cael.vibratite.view.MenuView;
 import com.om1cael.vibratite.view.RegisterView;
 
 public class RegisterAuthController implements AuthController {

@@ -16,8 +16,6 @@ public class MenuController {
         this.menuView = menuView;
         this.inputController = inputController;
         this.dbConnector = dbConnector;
-
-        this.handleMenuChoice();
     }
 
     public void handleMenuChoice() {

@@ -21,7 +21,8 @@ public class Main {
             InputController inputController = new InputController(inputView);
 
             MenuView menuView = new MenuView(inputController);
-            new MenuController(menuView, inputController, dbConnector);
+            new MenuController(menuView, inputController, dbConnector)
+                    .handleMenuChoice();
         } catch (SQLException e) {
             throw new RuntimeException("An error occurred during the initialization", e);
         }

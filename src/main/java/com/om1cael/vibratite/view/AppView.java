@@ -18,6 +18,6 @@ public class AppView {
     }
 
     public double getAppInput() {
-        return this.inputController.handleNumberInput("Your choice: ", 1, 4);
+        return this.inputController.handleNumberInput("Your choice: ", 1, 5);
     }
 }
