@@ -64,6 +64,6 @@ public class AppController {
         new AddGameController(
                 new AddGameView(this.inputController),
                 new GameDAO(this.dbConnector)
-        );
+        ).interact();
     }
 }
