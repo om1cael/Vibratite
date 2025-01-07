@@ -15,7 +15,7 @@ public class GamesView {
 
     private static boolean isGameListEmptyOrNull(List<Game> gameList) {
         if(gameList == null || gameList.isEmpty()) {
-            System.out.println("No games found in your account.");
+            System.out.println("No games found.");
             return true;
         }
         return false;
