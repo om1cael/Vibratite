@@ -47,6 +47,29 @@ public class UserDAO {
         }
     }
 
+    public User get(int id) {
+        final String query = """
+                             SELECT * FROM Users
+                             WHERE id = ?
+                             """;
+
+        try(PreparedStatement preparedStatement = this.connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()) {
+                return new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("email")
+                );
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return null;
+    }
+
     public List<User> getAll() {
         final String query = "SELECT * FROM Users";
         List<User> userList = new ArrayList<>();
