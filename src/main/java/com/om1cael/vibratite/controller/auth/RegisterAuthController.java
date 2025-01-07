@@ -22,6 +22,8 @@ public class RegisterAuthController implements AuthController {
         User newUser = this.registerView.getRegisterUser();
 
         if(userDAO.create(newUser)) {
+            newUser = userDAO.get(newUser.name(), newUser.email());
+
             Main.loggedInUser = newUser;
             registerView.successfulRegister(newUser);
 

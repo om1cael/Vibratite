@@ -22,6 +22,8 @@ public class LoginAuthController implements AuthController {
         User user = this.loginView.getLoginUser();
 
         if(userDAO.exists(user.name(), user.email())) {
+            user = userDAO.get(user.name(), user.email());
+
             Main.loggedInUser = user;
             loginView.successfulLogin(user);
 
