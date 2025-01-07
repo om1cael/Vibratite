@@ -47,14 +47,15 @@ public class UserDAO {
         }
     }
 
-    public User get(int id) {
+    public User get(String name, String email) {
         final String query = """
                              SELECT * FROM Users
-                             WHERE id = ?
+                             WHERE name = ? AND email = ?
                              """;
 
         try(PreparedStatement preparedStatement = this.connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, email);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()) {
